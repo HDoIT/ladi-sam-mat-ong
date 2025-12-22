@@ -29,6 +29,152 @@
     <link href="assets/css/style.css" rel="stylesheet">
     <link href="assets/css/responsive.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+    <style>
+        .logo-loader {
+            width: 160px;
+            height: 160px;
+            margin: 0 auto 30px;
+            position: relative;
+        }
+
+        .logo-loader img {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            object-fit: contain;
+            animation: hologramFloat 3s ease-in-out infinite;
+            filter: brightness(1.2) contrast(1.2);
+            position: relative;
+            z-index: 2;
+        }
+
+        @keyframes hologramFloat {
+
+            0%,
+            100% {
+                transform: translateY(0) rotateX(0);
+                box-shadow:
+                    0 0 20px rgba(0, 255, 255, 0.5),
+                    0 0 40px rgba(0, 255, 255, 0.3),
+                    0 0 60px rgba(0, 255, 255, 0.1);
+            }
+
+            33% {
+                transform: translateY(-10px) rotateX(15deg);
+                box-shadow:
+                    0 0 30px rgba(255, 0, 255, 0.6),
+                    0 0 50px rgba(255, 0, 255, 0.4),
+                    0 0 70px rgba(255, 0, 255, 0.2);
+            }
+
+            66% {
+                transform: translateY(5px) rotateX(-10deg);
+                box-shadow:
+                    0 0 30px rgba(0, 255, 0, 0.6),
+                    0 0 50px rgba(0, 255, 0, 0.4),
+                    0 0 70px rgba(0, 255, 0, 0.2);
+            }
+        }
+
+        /* Hiệu ứng quét laser */
+        .logo-loader::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to bottom,
+                    transparent 0%,
+                    rgba(0, 255, 255, 0.2) 10%,
+                    transparent 20%,
+                    transparent 80%,
+                    rgba(255, 0, 255, 0.2) 90%,
+                    transparent 100%);
+            border-radius: 50%;
+            animation: laserScan 2s linear infinite;
+            z-index: 3;
+            mix-blend-mode: screen;
+        }
+
+        @keyframes laserScan {
+            0% {
+                transform: translateY(-100%);
+            }
+
+            100% {
+                transform: translateY(100%);
+            }
+        }
+
+        /* Thêm hiệu ứng cho chữ loading phía dưới */
+        .txt-loading {
+            margin-top: 20px;
+        }
+
+        .txt-loading .letters-loading {
+            animation: letterPulse 1.5s ease-in-out infinite;
+            animation-delay: calc(var(--letter-index) * 0.1s);
+        }
+
+        @keyframes letterPulse {
+
+            0%,
+            100% {
+                opacity: 0.6;
+                transform: scale(1);
+                text-shadow: 0 0 5px rgba(255, 255, 255, 0.5);
+            }
+
+            50% {
+                opacity: 1;
+                transform: scale(1.1);
+                text-shadow: 0 0 15px rgba(255, 255, 255, 0.8);
+            }
+        }
+
+        /* Đặt delay cho từng chữ cái */
+        .txt-loading span:nth-child(1) {
+            --letter-index: 1;
+        }
+
+        .txt-loading span:nth-child(2) {
+            --letter-index: 2;
+        }
+
+        .txt-loading span:nth-child(3) {
+            --letter-index: 3;
+        }
+
+        .txt-loading span:nth-child(4) {
+            --letter-index: 4;
+        }
+
+        .txt-loading span:nth-child(5) {
+            --letter-index: 5;
+        }
+
+        .txt-loading span:nth-child(6) {
+            --letter-index: 6;
+        }
+
+        .txt-loading span:nth-child(7) {
+            --letter-index: 7;
+        }
+
+        .txt-loading span:nth-child(8) {
+            --letter-index: 8;
+        }
+
+        .txt-loading span:nth-child(9) {
+            --letter-index: 9;
+        }
+
+        .txt-loading span:nth-child(10) {
+            --letter-index: 10;
+        }
+    </style>
 </head>
 
 
@@ -43,19 +189,22 @@
                 <div class="preloader-close">Preloader Close</div>
                 <div id="handle-preloader" class="handle-preloader">
                     <div class="animation-preloader">
-                        <div class="spinner"></div>
+                        <!-- <div class="spinner"></div> -->
+                        <div class="logo-loader">
+                            <img src="assets/images/Logo ung dung (transparent).png" alt="Logo" />
+                        </div>
+
                         <div class="txt-loading">
-                            <span data-text-preloader="S" class="letters-loading">S</span>
-                            <span data-text-preloader="Â" class="letters-loading">Â</span>
-                            <span data-text-preloader="M" class="letters-loading">M</span>
-                            <span data-text-preloader="N" class="letters-loading">N</span>
+                            <span data-text-preloader="A" class="letters-loading">A</span>
                             <span data-text-preloader="G" class="letters-loading">G</span>
-                            <span data-text-preloader="Ọ" class="letters-loading">Ọ</span>
-                            <span data-text-preloader="C" class="letters-loading">C</span>
-                            <span data-text-preloader="L" class="letters-loading">L</span>
                             <span data-text-preloader="I" class="letters-loading">I</span>
+                            <span data-text-preloader="Ó" class="letters-loading">Ó</span>
+                            <span data-text-preloader="K" class="letters-loading">K</span>
+                            <span data-text-preloader="O" class="letters-loading">O</span>
                             <span data-text-preloader="N" class="letters-loading">N</span>
-                            <span data-text-preloader="H" class="letters-loading">H</span>
+                            <span data-text-preloader="T" class="letters-loading">T</span>
+                            <span data-text-preloader="U" class="letters-loading">U</span>
+                            <span data-text-preloader="M" class="letters-loading">M</span>
                         </div>
                     </div>
                 </div>
@@ -75,7 +224,7 @@
                         <div class="sidebar-info-contents">
                             <div class="content-inner">
                                 <div class="logo">
-                                    <!-- <a href="#"><img src="assets/images/logo-2.png" alt="Sâm Ngọc Linh" /></a> -->
+                                    <a href="#"><img src="assets/images/Logo ung dung (transparent).png" alt="Sâm Ngọc Linh" /></a>
                                 </div>
                                 <div class="content-box">
                                     <h4>Về Chúng Tôi</h4>
@@ -113,8 +262,8 @@
             <div class="header-lower">
                 <div class="outer-box">
                     <div class="logo-box">
-                        <!-- <figure class="logo"><a href="#"><img src="assets/images/logo.png"
-                                    alt="Sâm Ngọc Linh Ngâm Mật Ong"></a></figure> -->
+                        <figure class="logo"><a href="#"><img src="assets/images/Logo ung dung (transparent) - Copy.png"
+                                    alt="Sâm Ngọc Linh Ngâm Mật Ong"></a></figure>
                     </div>
                     <div class="menu-area">
                         <!--Mobile Navigation Toggler-->
@@ -162,8 +311,8 @@
             <div class="sticky-header">
                 <div class="outer-box">
                     <div class="logo-box">
-                        <!-- <figure class="logo"><a href="#"><img src="assets/images/logo.png" alt="Sâm Ngọc Linh"></a>
-                        </figure> -->
+                        <figure class="logo"><a href="#"><img src="assets/images/Logo ung dung (transparent) - Copy.png" alt="Sâm Ngọc Linh"></a>
+                        </figure>
                         <div class="header-order-btn ml-30">
                             <a href="#order" class="order-now-btn elegant-shake">ĐẶT HÀNG NGAY</a>
                         </div>
@@ -375,8 +524,9 @@
                     <div class="col-xl-4 col-lg-4 col-md-6">
                         <div class="plastic-product-card">
                             <div class="product-thumbnail">
-                                <img src="/assets/images/products/sam-ngoc-linh-mat-ong.jpg" alt="Sâm Ngọc Linh ngâm mật ong"
-                                    class="img-fluid main-image zoomable-image" data-color="matong">
+                                <img src="/assets/images/products/sam-ngoc-linh-mat-ong.jpg"
+                                    alt="Sâm Ngọc Linh ngâm mật ong" class="img-fluid main-image zoomable-image"
+                                    data-color="matong">
                             </div>
                             <div class="product-info">
                                 <span class="product-category">Sâm Ngâm Mật</span>
@@ -418,7 +568,9 @@
                                     <button class="slider-nav next"><i class="fas fa-chevron-right"></i></button> -->
                                 </div>
                                 <div class="product-price">
-                                    <span class="current-price">850.000đ</span>
+                                    <span class="current-price">499.000đ</span>
+                                    <span
+                                        style="background: red; padding: 10px; color: aliceblue; font-weight: bolder; position: absolute; right: 20px; bottom: 40px;">Freeship</span>
                                 </div>
                             </div>
                         </div>
@@ -479,7 +631,9 @@
 
                                 </div>
                                 <div class="product-price">
-                                    <span class="current-price">350.000đ</span>
+                                    <span class="current-price">379.000đ</span>
+                                    <span
+                                        style="background: red; padding: 10px; color: aliceblue; font-weight: bolder; position: absolute; right: 20px; bottom: 40px;">Freeship</span>
                                 </div>
                             </div>
                         </div>
@@ -532,7 +686,9 @@
 
                                 </div>
                                 <div class="product-price">
-                                    <span class="current-price">550.000đ</span>
+                                    <span class="current-price">279.000đ</span>
+                                    <span
+                                        style="background: red; padding: 10px; color: aliceblue; font-weight: bolder; position: absolute; right: 20px; bottom: 40px;">Freeship</span>
                                 </div>
                             </div>
                         </div>
@@ -545,8 +701,8 @@
                             <div class="row no-gutters align-items-center">
                                 <div class="col-lg-6">
                                     <div class="combo-image">
-                                        <img src="assets/images/products/combo-sam-ngoc-linh.jpg" alt="Combo Sâm Ngọc Linh"
-                                            class="img-fluid combo-main-image zoomable-image">
+                                        <img src="assets/images/products/combo-sam-ngoc-linh.jpg"
+                                            alt="Combo Sâm Ngọc Linh" class="img-fluid combo-main-image zoomable-image">
                                         <div class="combo-thumbnail-slider">
                                             <button class="slider-nav prev"><i class="fas fa-chevron-left"></i></button>
                                             <div class="combo-thumbnails-container">
@@ -581,10 +737,10 @@
                                                         alt="Set sâm cao cấp">
                                                 </div>
                                                 <div class="thumbnail-item"
-                                                data-image="assets/images/products/combo-sam-ngoc-linh-7.jpg">
-                                                <img src="assets/images/products/combo-sam-ngoc-linh-7.jpg"
-                                                    alt="Set sâm cao cấp">
-                                            </div>
+                                                    data-image="assets/images/products/combo-sam-ngoc-linh-7.jpg">
+                                                    <img src="assets/images/products/combo-sam-ngoc-linh-7.jpg"
+                                                        alt="Set sâm cao cấp">
+                                                </div>
                                             </div>
                                             <button class="slider-nav next"><i
                                                     class="fas fa-chevron-right"></i></button>
@@ -602,9 +758,9 @@
                                         </div>
                                         <div class="combo-price">
                                             <div class="price-group">
-                                                <span class="current-price">1.490.000đ</span>
-                                                <span class="old-price">1.750.000đ</span>
-                                                <span class="discount">Tiết kiệm 260.000đ (15%)</span>
+                                                <span class="current-price">499.000đ</span>
+                                                <span class="old-price">999.000đ</span>
+                                                <span class="discount">Tiết kiệm 499.000đ (50%)</span>
                                             </div>
                                         </div>
                                         <!-- <div class="combo-includes">
@@ -651,8 +807,7 @@
                         <div class="shop-block-one wow fadeInUp animated animated" data-wow-delay="00ms"
                             data-wow-duration="1500ms">
                             <div class="inner-box">
-                                <figure class="image-box"><a href="#"><img
-                                            src="assets/images/resource/shop/shop-1.png"
+                                <figure class="image-box"><a href="#"><img src="assets/images/resource/shop/shop-1.png"
                                             alt="Sâm Ngọc Linh Ngâm Mật Ong 100ml"></a></figure>
                                 <div class="lower-content">
                                     <ul class="rating clearfix">
@@ -663,7 +818,7 @@
                                         <li><i class="fas fa-star"></i></li>
                                     </ul>
                                     <h5><a href="#">Sâm Ngọc Linh Ngâm Mật Ong 100ml</a></h5>
-                                    <span class="price">850.000đ</span>
+                                    <span class="price">499.000đ</span>
                                 </div>
                             </div>
                         </div>
@@ -672,8 +827,8 @@
                         <div class="shop-block-one wow fadeInUp animated animated" data-wow-delay="200ms"
                             data-wow-duration="1500ms">
                             <div class="inner-box">
-                                <figure class="image-box"><a href="#"><img
-                                            src="assets/images/resource/shop/shop-2.png" alt="Trà Lá Sâm Ngọc Linh"></a>
+                                <figure class="image-box"><a href="#"><img src="assets/images/resource/shop/shop-2.png"
+                                            alt="Trà Lá Sâm Ngọc Linh"></a>
                                 </figure>
                                 <div class="lower-content">
                                     <ul class="rating clearfix">
@@ -684,7 +839,7 @@
                                         <li><i class="fas fa-star-half"></i></li>
                                     </ul>
                                     <h5><a href="#">Trà Lá Sâm Ngọc Linh 150g</a></h5>
-                                    <span class="price">350.000đ</span>
+                                    <span class="price">379.000đ</span>
                                 </div>
                             </div>
                         </div>
@@ -693,8 +848,8 @@
                         <div class="shop-block-one wow fadeInUp animated animated" data-wow-delay="400ms"
                             data-wow-duration="1500ms">
                             <div class="inner-box">
-                                <figure class="image-box"><a href="#"><img
-                                            src="assets/images/resource/shop/shop-3.png" alt="Sâm Dây Ngọc Linh"></a>
+                                <figure class="image-box"><a href="#"><img src="assets/images/resource/shop/shop-3.png"
+                                            alt="Sâm Dây Ngọc Linh"></a>
                                 </figure>
                                 <div class="lower-content">
                                     <ul class="rating clearfix">
@@ -705,7 +860,7 @@
                                         <li><i class="fas fa-star-half"></i></li>
                                     </ul>
                                     <h5><a href="#">Sâm Dây Ngọc Linh 500g</a></h5>
-                                    <span class="price">550.000đ</span>
+                                    <span class="price">279.000đ</span>
                                 </div>
                             </div>
                         </div>
@@ -818,6 +973,11 @@
                                 </div>
 
                                 <div class="quick-order-group">
+                                    <label for="quick-address">Số lượng*</label>
+                                    <input type="text" id="quick-address" required>
+                                </div>
+
+                                <div class="quick-order-group">
                                     <label for="quick-address">Địa chỉ nhận hàng*</label>
                                     <input type="text" id="quick-address" required>
                                 </div>
@@ -841,7 +1001,7 @@
                                             </div>
                                             <div class="quick-product-detail">
                                                 <h4>Sâm Ngọc Linh Ngâm Mật Ong 100ml</h4>
-                                                <p>850.000đ</p>
+                                                <p>499.000đ</p>
                                                 <!-- <div class="color-options">
                                                     <div class="color-thumb active" data-img="images/products/sam-ngoc-linh-mat-ong.jpg">
                                                         <img src="images/products/sam-ngoc-linh-mat-ong.jpg" alt="Sâm Ngọc Linh ngâm mật ong">
@@ -875,7 +1035,7 @@
                                             </div>
                                             <div class="quick-product-detail">
                                                 <h4>Trà Lá Sâm Ngọc Linh 150g</h4>
-                                                <p>350.000đ</p>
+                                                <p>379.000đ</p>
                                                 <!-- <div class="color-options">
                                                     <div class="color-thumb active" data-img="images/products/tra-la-sam-ngoc-linh.jpg">
                                                         <img src="images/products/tra-la-sam-ngoc-linh.jpg" alt="Trà lá sâm Ngọc Linh">
@@ -909,7 +1069,7 @@
                                             </div>
                                             <div class="quick-product-detail">
                                                 <h4>Sâm Dây Ngọc Linh 500g</h4>
-                                                <p>550.000đ</p>
+                                                <p>279.000đ</p>
                                                 <!-- <div class="color-options">
                                                     <div class="color-thumb active" data-img="images/products/sam-day-ngoc-linh.jpg">
                                                         <img src="images/products/sam-day-ngoc-linh.jpg" alt="Sâm dây Ngọc Linh">
@@ -942,9 +1102,9 @@
                                                 style="background-image: url('assets/images/products/combo-sam-ngoc-linh.jpg')">
                                             </div>
                                             <div class="quick-product-detail">
-                                                <h4>Combo Sâm Ngọc Linh Cao Cấp</h4>
-                                                <p>1.490.000đ <span class="quick-original-price">1.750.000đ</span></p>
-                                                <div class="quick-combo-tag">Tiết kiệm 15%</div>
+                                                <h4>Sâm Ngọc Linh Cao Cấp</h4>
+                                                <p>499.000đ <span class="quick-original-price">999.000đ</span></p>
+                                                <div class="quick-combo-tag">Tiết kiệm 50%</div>
                                                 <!-- <div class="color-options">
                                                     <div class="color-thumb active" data-img="images/products/combo-sam-ngoc-linh.jpg">
                                                         <img src="images/products/combo-sam-ngoc-linh.jpg" alt="Combo Sâm Ngọc Linh">
