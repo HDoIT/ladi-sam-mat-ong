@@ -174,6 +174,27 @@
         .txt-loading span:nth-child(10) {
             --letter-index: 10;
         }
+
+        .logo-res {
+
+            max-width: 43% !important;
+        }
+
+        .sticky-header .logo-box {
+            display: flex;
+        }
+
+        .logo-mobile {
+            max-width: 60%;
+        }
+
+        @media screen and (max-width: 767px) {
+            .main-header .outer-box {
+                flex-wrap: nowrap !important;
+            }
+
+
+        }
     </style>
 </head>
 
@@ -224,7 +245,8 @@
                         <div class="sidebar-info-contents">
                             <div class="content-inner">
                                 <div class="logo">
-                                    <a href="#"><img src="assets/images/Logo ung dung (transparent).png" alt="Sâm Ngọc Linh" /></a>
+                                    <a href="#"><img src="assets/images/Logo ung dung (transparent).png"
+                                            alt="Sâm Ngọc Linh" /></a>
                                 </div>
                                 <div class="content-box">
                                     <h4>Về Chúng Tôi</h4>
@@ -261,15 +283,16 @@
             <!-- header-lower -->
             <div class="header-lower">
                 <div class="outer-box">
-                    <div class="logo-box">
+                    <div class="logo-box" style="display: flex;">
                         <figure class="logo"><a href="#"><img src="assets/images/Logo ung dung (transparent) - Copy.png"
-                                    alt="Sâm Ngọc Linh Ngâm Mật Ong"></a></figure>
+                                    alt="Sâm Ngọc Linh Ngâm Mật Ong" class="logo-mobile"></a></figure>
+                        <div class="header-order-btn ml-30">
+                            <a href="#order" class="order-now-btn elegant-shake">ĐẶT HÀNG</a>
+                        </div>
+
                     </div>
                     <div class="menu-area">
                         <!--Mobile Navigation Toggler-->
-                        <div class="header-order-btn ml-30">
-                            <a href="#order" class="order-now-btn elegant-shake">ĐẶT HÀNG NGAY</a>
-                        </div>
 
                         <div class="mobile-nav-toggler">
                             <i class="icon-bar"></i>
@@ -311,7 +334,8 @@
             <div class="sticky-header">
                 <div class="outer-box">
                     <div class="logo-box">
-                        <figure class="logo"><a href="#"><img src="assets/images/Logo ung dung (transparent) - Copy.png" alt="Sâm Ngọc Linh"></a>
+                        <figure class="logo"><a href="#"><img src="assets/images/Logo ung dung (transparent) - Copy.png"
+                                    alt="Sâm Ngọc Linh" class="logo-res"></a>
                         </figure>
                         <div class="header-order-btn ml-30">
                             <a href="#order" class="order-now-btn elegant-shake">ĐẶT HÀNG NGAY</a>
