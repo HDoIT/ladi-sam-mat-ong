@@ -396,6 +396,325 @@
 
         }
     </style>
+    <style>
+        /* Container chính - Giới hạn 80px */
+        /* Container chính - 80px */
+         /* Container chính - 80px */
+         .purchase-notifications {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            width: 350px;
+            height: 100px;
+            z-index: 9999;
+        }
+
+        /* Card mua hàng */
+        .purchase-card {
+            background: white;
+            border-radius: 12px;
+            padding: 12px 15px;
+            box-shadow: 0 4px 20px rgba(44, 84, 29, 0.1);
+            border-left: 4px solid #4CAF50;
+            position: relative;
+            overflow: hidden;
+            height: 100px;
+            transform: translateX(400px);
+            opacity: 0;
+            animation: purchaseSlideIn 0.5s ease-out forwards;
+            transition: all 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        @keyframes purchaseSlideIn {
+            to {
+                transform: translateX(0);
+                opacity: 1;
+            }
+        }
+
+        @keyframes purchaseSlideOut {
+            to {
+                transform: translateX(400px);
+                opacity: 0;
+            }
+        }
+
+        /* Header */
+        .purchase-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 6px;
+        }
+
+        .header-left {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .purchase-icon {
+            width: 22px;
+            height: 22px;
+            background: #4CAF50;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 11px;
+            animation: iconPulse 2s infinite;
+        }
+
+        @keyframes iconPulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+        }
+
+        .purchase-title h4 {
+            color: #333;
+            font-size: 13px;
+            font-weight: 600;
+        }
+
+        .purchase-badge {
+            background: #4CAF50;
+            color: white;
+            font-size: 10px;
+            font-weight: 700;
+            padding: 2px 8px;
+            border-radius: 10px;
+            white-space: nowrap;
+        }
+
+        /* Thời gian */
+        .purchase-time {
+            font-size: 10px;
+            color: #999;
+            display: flex;
+            align-items: center;
+            gap: 4px;
+        }
+
+        .timer-dot {
+            width: 4px;
+            height: 4px;
+            background: #4CAF50;
+            border-radius: 50%;
+            animation: timerBlink 1s infinite;
+        }
+
+        @keyframes timerBlink {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.3; }
+        }
+
+        /* Nội dung chính - BỐ CỤC 2 CỘT */
+        .purchase-content {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            height: 36px;
+        }
+
+        /* Customer info - Cột trái - KHÔNG có "..." */
+        .customer-info {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            flex: 1;
+            min-width: 0;
+        }
+
+        .customer-avatar {
+            flex-shrink: 0;
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            font-size: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+        }
+
+        .customer-details {
+            flex: 1;
+            min-width: 0;
+        }
+
+        /* CHỈNH SỬA: Tên khách hàng KHÔNG bị "..." - Hiển thị đầy đủ */
+        .customer-name {
+            font-size: 12px;
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 1px;
+            line-height: 1.2;
+            /* KHÔNG có các thuộc tính sau: */
+            /* white-space: nowrap; */
+            /* overflow: hidden; */
+            /* text-overflow: ellipsis; */
+        }
+
+        .customer-location {
+            font-size: 10px;
+            color: #666;
+            display: flex;
+            align-items: center;
+            gap: 3px;
+            white-space: nowrap;
+        }
+
+        .location-icon {
+            color: #FF6B6B;
+            font-size: 9px;
+        }
+
+        /* Product info - Cột phải - CÓ "..." */
+        .product-info {
+            flex-shrink: 0;
+            text-align: right;
+            min-width: 110px;
+        }
+
+        /* CHỈNH SỬA: CHỈ tên sản phẩm bị "..." */
+        .product-name {
+            font-size: 11px;
+            font-weight: 600;
+            color: #2c541d;
+            white-space: nowrap;        /* ← CÓ */
+            overflow: hidden;          /* ← CÓ */
+            text-overflow: ellipsis;   /* ← CÓ: Tạo "..." cho sản phẩm */
+            margin-bottom: 2px;
+            line-height: 1.2;
+            display: block;
+            max-width: 110px;         /* Giới hạn chiều rộng */
+        }
+
+        .purchase-details {
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+            gap: 6px;
+        }
+
+        .quantity-badge {
+            background: #FF9800;
+            color: white;
+            font-size: 10px;
+            font-weight: 700;
+            padding: 1px 5px;
+            border-radius: 8px;
+            white-space: nowrap;
+        }
+
+        .price-tag {
+            font-size: 12px;
+            font-weight: 700;
+            color: #e91e63;
+            white-space: nowrap;
+        }
+
+        /* Counter */
+        .purchase-counter {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: linear-gradient(135deg, #2c541d, #4CAF50);
+            color: white;
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 600;
+            box-shadow: 0 4px 15px rgba(44, 84, 29, 0.3);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            z-index: 9998;
+            animation: counterFloat 3s ease-in-out infinite;
+        }
+
+        @keyframes counterFloat {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-5px); }
+        }
+
+        /* Progress bar ẩn ở dưới */
+        .progress-bar {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0%;
+            height: 2px;
+            background: linear-gradient(90deg, #4CAF50, #8BC34A);
+            animation: progressGrow 8s linear forwards;
+        }
+
+        @keyframes progressGrow {
+            to { width: 100%; }
+        }
+
+        /* Demo */
+        .demo-container {
+            text-align: center;
+            padding: 20px;
+        }
+
+        .demo-title {
+            color: #333;
+            font-size: 24px;
+            margin-bottom: 10px;
+        }
+
+        .demo-subtitle {
+            color: #666;
+            font-size: 14px;
+        }
+
+        /* Responsive */
+        @media (max-width: 480px) {
+            .purchase-notifications {
+                width: 300px;
+                right: 10px;
+                top: 10px;
+            }
+            
+            .purchase-card {
+                padding: 10px 12px;
+            }
+            
+            .product-info {
+                min-width: 90px;
+            }
+            
+            .product-name {
+                max-width: 90px; /* Giảm theo container */
+            }
+            
+            .customer-name {
+                font-size: 11px;
+            }
+            
+            .purchase-counter {
+                right: 10px;
+                bottom: 10px;
+                padding: 6px 12px;
+                font-size: 11px;
+            }
+        }
+
+        /* Chế độ hiển thị tên dài - tự động xuống dòng */
+        .customer-name.long-name {
+            white-space: normal;
+            word-wrap: break-word;
+            line-height: 1.1;
+            font-size: 11px;
+        }
+    </style>
 </head>
 
 
@@ -1629,6 +1948,257 @@
         <img class="modal-content" id="modalImage">
     </div>
     <!-- jequery plugins -->
+    <div class="demo-container">
+        <h1 class="demo-title">Thông Báo Mua Hàng</h1>
+        <p class="demo-subtitle">Bố cục đã fix - Hiển thị đầy đủ thông tin</p>
+    </div>
+
+    <!-- Container thông báo -->
+    <div class="purchase-notifications" id="purchaseContainer">
+        <!-- Card sẽ được thêm tự động -->
+    </div>
+
+    <!-- Counter -->
+    <div class="purchase-counter">
+        <i class="fas fa-shopping-bag"></i>
+        <span id="totalSales">12,840</span> sản phẩm đã bán
+    </div>
+
+    <script>
+        // Dữ liệu khách hàng đã mua
+        const purchaseData = [
+            {
+                name: "Chị Nguyễn Thị Mai Anh",
+                location: "Hà Nội",
+                avatar: "👩",
+                product: "Sâm Ngọc Linh Ngâm Mật Ong 100ml",
+                quantity: 2,
+                price: "998.000đ",
+                time: "vừa xong"
+            },
+            {
+                name: "Anh Trần Văn Hùng",
+                location: "TP. Hồ Chí Minh",
+                avatar: "👨",
+                product: "Combo Sâm Ngọc Linh Cao Cấp",
+                quantity: 1,
+                price: "1.290.000đ",
+                time: "1 phút trước"
+            },
+            {
+                name: "Cô Lê Thị Lan Hương",
+                location: "Đà Nẵng",
+                avatar: "👵",
+                product: "Trà Lá Sâm Ngọc Linh 300g",
+                quantity: 3,
+                price: "2.097.000đ",
+                time: "2 phút trước"
+            },
+            {
+                name: "Chú Phạm Văn Đức",
+                location: "Hải Phòng",
+                avatar: "👴",
+                product: "Sâm Dây Ngọc Linh 500g",
+                quantity: 2,
+                price: "558.000đ",
+                time: "3 phút trước"
+            },
+            {
+                name: "Anh Bùi Quang Bảo",
+                location: "Cần Thơ",
+                avatar: "👨‍💼",
+                product: "Set Quà Tặng Cao Cấp",
+                quantity: 1,
+                price: "3.990.000đ",
+                time: "5 phút trước"
+            }
+        ];
+
+        // Dữ liệu bổ sung
+        const locations = ["Hà Nội", "TP.HCM", "Đà Nẵng", "Hải Phòng", "Cần Thơ", "Kon Tum", "Nha Trang", "Đà Lạt", "Huế", "Vũng Tàu"];
+        const products = [
+            { name: "Sâm Ngọc Linh Ngâm Mật Ong 100ml", price: 499000 },
+            { name: "Sâm Ngọc Linh Ngâm Mật Ong 250ml", price: 850000 },
+            { name: "Trà Lá Sâm Ngọc Linh 150g", price: 379000 },
+            { name: "Trà Lá Sâm Ngọc Linh 300g", price: 699000 },
+            { name: "Sâm Dây Ngọc Linh 500g", price: 279000 },
+            { name: "Combo Sâm Ngọc Linh Cao Cấp", price: 1290000 },
+            { name: "Combo 3 Sản Phẩm", price: 2490000 },
+            { name: "Set Quà Tặng Cao Cấp", price: 3990000 }
+        ];
+
+        // Biến
+        let currentIndex = 0;
+        let totalSales = 12840;
+        let currentCard = null;
+
+        // Format tiền
+        function formatCurrency(amount) {
+            return amount.toLocaleString('vi-VN') + 'đ';
+        }
+
+        // Tạo khách hàng ngẫu nhiên
+        function generateRandomPurchase() {
+            const firstName = ["Nguyễn", "Trần", "Lê", "Phạm", "Hoàng", "Vũ", "Đặng", "Bùi"][Math.floor(Math.random() * 8)];
+            const middleName = ["Thị", "Văn", "Quang", "Minh", "Thanh"][Math.floor(Math.random() * 5)];
+            const lastName = ["Mai", "Hùng", "Lan", "Đức", "Bảo", "Nga", "Tuấn", "Hương", "Anh", "Chi"][Math.floor(Math.random() * 10)];
+            
+            const gender = Math.random() > 0.5 ? "Chị" : "Anh";
+            const product = products[Math.floor(Math.random() * products.length)];
+            const quantity = Math.floor(Math.random() * 3) + 1;
+            const totalPrice = product.price * quantity;
+            
+            const timeOptions = ["vừa xong", "1 phút trước", "2 phút trước", "3 phút trước"];
+            
+            return {
+                name: `${gender} ${firstName} ${middleName} ${lastName}`,
+                location: locations[Math.floor(Math.random() * locations.length)],
+                avatar: Math.random() > 0.5 ? "👩" : "👨",
+                product: product.name,
+                quantity: quantity,
+                price: formatCurrency(totalPrice),
+                time: timeOptions[Math.floor(Math.random() * timeOptions.length)]
+            };
+        }
+
+        // Tạo card HTML với BỐ CỤC MỚI
+        function createPurchaseCard(purchase) {
+            return `
+                <div class="purchase-card" data-id="${Date.now()}">
+                    <div class="progress-bar"></div>
+                    
+                    <div class="purchase-header">
+                        <div class="header-left">
+                            <div class="purchase-icon">
+                                <i class="fas fa-check"></i>
+                            </div>
+                            <div class="purchase-title">
+                                <h4>Đã mua hàng</h4>
+                            </div>
+                        </div>
+                        
+                        <div class="purchase-badge">THÀNH CÔNG</div>
+                        
+                        <div class="purchase-time">
+                            <div class="timer-dot"></div>
+                            ${purchase.time}
+                        </div>
+                    </div>
+                    
+                    <div class="purchase-content">
+                        <div class="customer-info">
+                            <div class="customer-avatar">${purchase.avatar}</div>
+                            <div class="customer-details">
+                                <div class="customer-name">${purchase.name}</div>
+                                <div class="customer-location">
+                                    <i class="fas fa-map-marker-alt location-icon"></i>
+                                    ${purchase.location}
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="product-info">
+                            <div class="product-name">${purchase.product}</div>
+                            <div class="purchase-details">
+                                <span class="quantity-badge">${purchase.quantity} SP</span>
+                                <span class="price-tag">${purchase.price}</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            `;
+        }
+
+        // Hiển thị card mới
+        function showPurchaseCard() {
+            // Ẩn card cũ nếu có
+            if (currentCard) {
+                currentCard.style.animation = 'purchaseSlideOut 0.5s ease-out forwards';
+                setTimeout(() => {
+                    if (currentCard && currentCard.parentNode) {
+                        currentCard.parentNode.removeChild(currentCard);
+                    }
+                    createNewPurchaseCard();
+                }, 500);
+            } else {
+                createNewPurchaseCard();
+            }
+        }
+
+        // Tạo card mua hàng mới
+        function createNewPurchaseCard() {
+            // Tạo thông tin mua hàng
+            let purchase;
+            if (Math.random() > 0.4) {
+                // Dùng data cố định
+                purchase = purchaseData[currentIndex % purchaseData.length];
+                currentIndex++;
+            } else {
+                // Tạo ngẫu nhiên
+                purchase = generateRandomPurchase();
+            }
+
+            // Cập nhật tổng bán hàng
+            totalSales += purchase.quantity;
+            document.getElementById('totalSales').textContent = totalSales.toLocaleString();
+
+            // Tạo và hiển thị card
+            const cardHTML = createPurchaseCard(purchase);
+            const container = document.getElementById('purchaseContainer');
+            container.innerHTML = cardHTML;
+            currentCard = container.querySelector('.purchase-card');
+
+            // Animation counter
+            animateCounter();
+
+            // Hiệu ứng hover
+            setupHoverEffects();
+
+            // Tự động chuyển sau 8 giây
+            setTimeout(showPurchaseCard, 8000);
+        }
+
+        // Animation counter
+        function animateCounter() {
+            const counter = document.getElementById('totalSales');
+            counter.style.transform = 'scale(1.2)';
+            counter.style.color = '#FFEB3B';
+            setTimeout(() => {
+                counter.style.transform = 'scale(1)';
+                counter.style.color = 'white';
+            }, 300);
+        }
+
+        // Hiệu ứng hover
+        function setupHoverEffects() {
+            if (currentCard) {
+                currentCard.addEventListener('mouseenter', function() {
+                    this.style.transform = 'translateY(-3px)';
+                    this.style.boxShadow = '0 8px 25px rgba(44, 84, 29, 0.2)';
+                });
+
+                currentCard.addEventListener('mouseleave', function() {
+                    this.style.transform = 'translateY(0)';
+                    this.style.boxShadow = '0 4px 20px rgba(44, 84, 29, 0.1)';
+                });
+            }
+        }
+
+        // Bắt đầu
+        document.addEventListener('DOMContentLoaded', function() {
+            // Hiển thị card đầu tiên sau 1 giây
+            setTimeout(() => {
+                showPurchaseCard();
+            }, 1000);
+
+            // Tăng sales ngẫu nhiên
+            setInterval(() => {
+                totalSales += Math.floor(Math.random() * 3) + 1;
+                document.getElementById('totalSales').textContent = totalSales.toLocaleString();
+                animateCounter();
+            }, 20000);
+        });
+    </script>
 
     <SCript>
         // Xử lý cuộn mượt và đóng menu
@@ -1957,7 +2527,7 @@
             })
                 .then(() => {
                     showSuccessPopup(selectedProducts);
-                     this.reset();
+                    this.reset();
                 })
                 .catch(err => {
                     console.error(err);
